@@ -1,0 +1,16 @@
+{
+  "name": "shaka-sample",
+  "version": "1.0.0",
+  "description": "MPD live debug player",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "keyiiiii",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "isomorphic-fetch": "^2.2.1",
+    "nodemon": "^2.0.4"
+  }
+}
