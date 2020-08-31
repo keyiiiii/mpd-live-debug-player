@@ -9,3 +9,6 @@ npm-debug.log
 .idea
 *.iml
 /node_modules
+
+.cache
+public/**

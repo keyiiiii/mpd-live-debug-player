@@ -1,3 +1,5 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 const manifestUri = 'manifest.mpd';
 
 function initApp() {
@@ -28,6 +30,14 @@ async function initPlayer(url) {
   // Listen for error events.
   player.addEventListener('error', onErrorEvent);
   video.addEventListener('ended', onEnded);
+  document.addEventListener('keydown', (e) => {
+    e.preventDefault();
+    console.log('e.keyCode', e.keyCode);
+    video.play();
+    console.debug('play');
+    // video.currentTime = 49;
+    // console.debug('skip');
+  });
 
   // Try to load a manifest.
   // This is an asynchronous process.
@@ -49,6 +59,7 @@ function onErrorEvent(event) {
 function onEnded() {
   const target = document.getElementById("ended");
   target.innerHTML = "再生終了しました";
+  console.log('再生終了しました');
 }
 
 function onError(error) {

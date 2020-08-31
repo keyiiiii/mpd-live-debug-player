@@ -4,13 +4,23 @@
   "description": "MPD live debug player",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "client": "parcel src/index.html -d public"
   },
   "author": "keyiiiii",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "core-js": "3",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.0.0-0",
+    "@babel/preset-env": "^7.11.0",
+    "parcel-bundler": "^1.12.4"
   }
 }
