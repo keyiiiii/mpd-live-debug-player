@@ -2,6 +2,11 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 const manifestUri = 'manifest.mpd';
 
+function logger(log) {
+  const target = document.getElementById("logger");
+  target.innerHTML = log;
+}
+
 function initApp() {
   const uid = getUid();
   const url = `${manifestUri}?uid=${uid}`;
@@ -16,6 +21,7 @@ function initApp() {
   } else {
     // This browser does not have the minimum set of APIs we need.
     console.error('Browser not supported!');
+    logger('Browser not supported!');
   }
 }
 
@@ -33,8 +39,10 @@ async function initPlayer(url) {
   document.addEventListener('keydown', (e) => {
     e.preventDefault();
     console.log('e.keyCode', e.keyCode);
+    logger(`e.keyCode: ${e.keyCode}`);
     video.play();
     console.debug('play');
+    logger('play');
     // video.currentTime = 49;
     // console.debug('skip');
   });
@@ -45,6 +53,7 @@ async function initPlayer(url) {
     await player.load(url);
     // This runs if the asynchronous load is successful.
     console.log('The video has now been loaded!');
+    logger('The video has now been loaded!');
   } catch (e) {
     // onError is executed if the asynchronous load fails.
     onError(e);
@@ -60,11 +69,13 @@ function onEnded() {
   const target = document.getElementById("ended");
   target.innerHTML = "再生終了しました";
   console.log('再生終了しました');
+  logger('再生終了しました');
 }
 
 function onError(error) {
   // Log the error.
   console.error('Error code', error.code, 'object', error);
+  logger(`Error code: ${error.code}, object: ${error}`)
 }
 
 function getUid() {
